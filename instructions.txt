@@ -1,0 +1,31 @@
+we use a virtual env to completely separate the project from the base python installation
+use pipenv to manage virtual env
+1. install pipenv using pip (any folder doesnt matter)
+2. create a virtual env using pipenv in the folder of the project
+	py -m pipenv install <libraries>
+	obs> for some reason have to press Enter when installing because it freezes
+3. develop the model
+4. serialze the model (transform the model to a dictionary structure)
+	Ex: { parameters:[1,2,3]}
+	link: https://scikit-learn.org/stable/modules/model_persistence.html
+	>>> from joblib import dump, load
+	>>> dump(clf, 'filename.joblib') 
+	Later you can load back the pickled model (possibly in another Python process) with:
+
+	>>> clf = load('filename.joblib') 
+
+4.1 create the .gitignore to not upload some files to github
+
+5. create the web app using flask
+Every time we run the app we would have to set the environment variable: set FLASK_APP=app   (where app.py is the main flask file)
+TO AVOID THAT, we install python-dotenv and create a .env file and set FLASK_APP inside this file
+5.1 activate the virtual environment using: py -m pipenv shell and exit the virtual env with: exit
+5.1 get the basic layout
+	@app.route(<url>) are the pages we have in the app
+	run the server using the command "flask run" inside virtual env (pipenv shell)
+5.2 create a form to give the input data
+link: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+	pipenv install flask-wtf
+
+
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
